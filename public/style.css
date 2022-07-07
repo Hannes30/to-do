@@ -1,0 +1,17 @@
+:root {
+  --orange: rgb(194, 98, 9);
+  --black: #111;
+  --blue: rgb(68, 144, 214);
+}
+
+body {
+  background-color: var(--black);
+  margin: 0;
+  padding: 0;
+}
+#nav {
+  text-align: center;
+  color: var(--blue);
+  border-bottom: 1px solid var(--orange);
+  margin: 0em 1em;
+}
