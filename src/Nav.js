@@ -4,9 +4,15 @@ class Nav extends React.Component {
   render() {
     return (
       <div id="nav">
-        <img src="/Images/logo.png" alt="DO-DO logo" />
+        <h2 className="creator-Name">
+          <a href="https://hannes-scheibelauer.de/">Hannes scheibelauer</a>
+        </h2>
         <h1>DO-DO</h1>
-        <p id="strich"></p>
+        <img
+          src={require("./Images/logo.png")}
+          alt="DO-DO logo"
+          className="logo"
+        />
       </div>
     );
   }

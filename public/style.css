@@ -1,17 +1,33 @@
 :root {
   --orange: rgb(194, 98, 9);
   --black: #111;
-  --blue: rgb(68, 144, 214);
+  --blue: rgb(75, 230, 196);
 }
 
 body {
   background-color: var(--black);
   margin: 0;
   padding: 0;
+  color: var(--blue);
 }
 #nav {
-  text-align: center;
-  color: var(--blue);
   border-bottom: 1px solid var(--orange);
   margin: 0em 1em;
+  width: 95vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.logo {
+  position: absolute;
+  width: 10em;
+  height: 7em;
+  right: 0;
+}
+.creator-Name a {
+  color: var(--blue);
+  position: absolute;
+  width: 30vw;
+  left: 2em;
+  top: 1.5em;
 }
