@@ -1,19 +1,20 @@
 :root {
-  --orange: rgb(194, 98, 9);
+  --White: rgb(228, 228, 228);
   --black: #111;
-  --blue: rgb(75, 230, 196);
+  --Grey: rgb(175, 175, 175);
 }
 
 body {
   background-color: var(--black);
   margin: 0;
   padding: 0;
-  color: var(--blue);
+  color: var(--White);
+  text-align: center;
+  width: 95vw;
 }
 #nav {
-  border-bottom: 1px solid var(--orange);
+  border-bottom: 1px solid var(--White);
   margin: 0em 1em;
-  width: 95vw;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -28,6 +29,43 @@ body {
   color: var(--blue);
   position: absolute;
   width: 30vw;
+  font-size: 1.5vw;
   left: 2em;
   top: 1.5em;
+}
+#Tasks-Header {
+  font-size: 2em;
+  margin: 2.5em;
+}
+
+#Tasks {
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin: 0;
+  color: var(--black);
+}
+.Task {
+  position: relative;
+  width: 70vw;
+  height: 3em;
+  margin: 1rem 0rem;
+  background-color: var(--Grey);
+  border-radius: 10px;
+}
+.Task-Name {
+  border-radius: 5px 5px 0px 0px;
+}
+.Task-Name span {
+  position: relative;
+  border-radius: 5px 5px 0px 0px;
+  float: left;
+  left: 2em;
+}
+.Task-Time {
+  position: relative;
+  font-size: 0.7em;
+  top: 0.5em;
 }
