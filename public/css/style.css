@@ -12,6 +12,22 @@ body {
   text-align: center;
   width: 95vw;
 }
+#login {
+  position: absolute;
+  right: 20vw;
+  padding: 10px;
+}
+#login a {
+  color: var(--Grey);
+  text-decoration: none;
+}
+#login span {
+  background-color: white;
+  color: black;
+  font-weight: 900;
+  padding: 10px;
+  border-radius: 0;
+}
 #nav {
   border-bottom: 1px solid var(--White);
   margin: 0em 1em;
@@ -68,4 +84,29 @@ body {
   position: relative;
   font-size: 0.7em;
   top: 0.5em;
+}
+.check-circel {
+  position: absolute;
+  left: -0.5vw;
+}
+.check-tick {
+  left: 5px;
+  top: 5px;
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  font-size: 30px;
+  opacity: 0;
+}
+.check-tick:hover {
+  opacity: 0.5;
+  cursor: pointer;
+}
+.check_container {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 50px;
+  height: 50px;
+  z-index: 1;
 }

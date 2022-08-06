@@ -3,12 +3,6 @@ import React, { useState, useEffect } from "react";
 let ArrayRes = [];
 
 function Tasks() {
-  const people = [
-    { id: 1, name: "Johnny", gender: "male", age: 30 },
-    { id: 2, name: "Jenny", gender: "female", age: 28 },
-    { id: 3, name: "Sam", gender: "male", age: 13 },
-    { id: 4, name: "Dean", gender: "male", age: 8 },
-  ];
   const [rerender, setrerender] = useState(null);
   let renderList = ArrayRes.map((item, index) => <Task Name={item["Title"]} />);
 
@@ -17,19 +11,25 @@ function Tasks() {
   }, []);
 
   const FetchTas = () => {
-    fetch("http://localhost:8080/")
+    /*fetch("http://localhost:8080/")
       .then((res) => res.json())
       .then((res) => {
         ArrayRes = res;
         setrerender("");
       })
-      .catch((error) => alert(error));
+      .catch((error) => alert(error));*/
   };
   return (
     <div>
       <ul>
+        <h2>Tasks</h2>
         {ArrayRes.map((data, index) => {
-          return <Task Title={data.Title} TimeDue={data.TimeDue} key={index} />;
+          if (data.Done == 0) {
+            console.log(index);
+            return (
+              <Task Title={data.Title} TimeDue={data.TimeDue} key={index} />
+            );
+          }
         })}
       </ul>
       {reset()}

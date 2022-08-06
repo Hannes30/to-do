@@ -8,9 +8,9 @@ const port = 8080;
 let count = 0;
 
 var con = mysql.createConnection({
-  host: "localhost",
+  host: "192.168.0.12",
   user: "hannes",
-  password: "hannes",
+  password: "Hann3s3O",
   database: "DoDo",
 });
 
@@ -21,7 +21,7 @@ app.use(function (req, res, next) {
   next();
 });
 
-app.get("", (req, res) => {
+app.get("/gettask", (req, res) => {
   count++;
   console.log("in");
   con.connect(function (err) {
@@ -37,3 +37,14 @@ app.get("/reset", (req, res) => {
   console.log("reset");
 });
 app.listen(port, console.log("listening on " + port));
+
+app.get("/check", (req, res) => {
+  console.log("in");
+  con.connect(function (err) {
+    if (err) throw err;
+    con.query(`Select * from Tasks `, function (err, result, fields) {
+      if (err) throw err;
+      res.send(result);
+    });
+  });
+});
