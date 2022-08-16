@@ -21,22 +21,29 @@ function Tasks() {
   };
   return (
     <div>
+      <button
+        id="logout-button"
+        onClick={() => {
+          window.localStorage.clear();
+          window.location.reload();
+        }}
+      >
+        Logout
+      </button>
       <ul>
         <h2>Tasks</h2>
-        {ArrayRes.map((data, index) => {
-          if (data.Done == 0) {
-            console.log(index);
-            return (
-              <Task Title={data.Title} TimeDue={data.TimeDue} key={index} />
-            );
-          }
-        })}
+        <div id="tasks">
+          {ArrayRes.map((data, index) => {
+            if (data.Done == 0) {
+              console.log(index);
+              return (
+                <Task Title={data.Title} TimeDue={data.TimeDue} key={index} />
+              );
+            }
+          })}
+        </div>
       </ul>
-      {reset()}
     </div>
   );
 }
 export default Tasks;
-function reset() {
-  fetch("http://localhost:8080/reset");
-}

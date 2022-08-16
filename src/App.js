@@ -1,18 +1,35 @@
 import Nav from "./Nav";
 import React from "react";
 import Tasks from "./Tasks";
+import Login from "./Login";
 
-class App extends React.Component {
-  render() {
-    return (
+function App(props) {
+  let render;
+  if (isLoggedin()) {
+    render = <Tasks />;
+  } else {
+    render = (
       <div>
-        <Nav />
-        <h2 id="Tasks-Header">Tasks</h2>
-        <div id="Tasks">
-          <Tasks />
-        </div>
+        <Login />
       </div>
     );
+  }
+
+  return (
+    <div>
+      <Nav />
+      {render}
+      <p id="footer">
+        <a href="https://hannes-scheibelauer.de/">© Hannes scheibelauer</a>
+      </p>
+    </div>
+  );
+  function isLoggedin() {
+    if (localStorage.getItem("email") != null) {
+      return true;
+    } else {
+      return false;
+    }
   }
 }
 

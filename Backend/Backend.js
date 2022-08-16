@@ -32,10 +32,72 @@ app.get("/gettask", (req, res) => {
     });
   });
 });
-app.get("/reset", (req, res) => {
-  count = 0;
-  console.log("reset");
+
+app.get("/login/:id", (req, res) => {
+  let email = req.params.id.split("&")[0].trim();
+  let password = req.params.id.split("&")[1];
+  console.log(email + " trys to log in");
+  con.connect(function (err) {
+    if (err) throw err;
+    con.query(
+      `Select * from Users where Email='${email}'`,
+      function (err, result, fields) {
+        if (err) throw err;
+        try {
+          console.log(result);
+          if (result[0].Password == password) {
+            res.send(true);
+          } else {
+            res.send(false);
+          }
+        } catch {
+          res.send("{}");
+        }
+      }
+    );
+  });
 });
+var help;
+var help2 = false;
+app.get("/signup/:id", (req, res) => {
+  help2 = false;
+  let email = req.params.id.split("&")[0].trim();
+  let username = req.params.id.split("&")[1].trim();
+  let password = req.params.id.split("&")[2];
+  console.log(email + " trys to sign in");
+  con.connect(function (err) {
+    if (err) throw err;
+    con.query(
+      `Select * from Users where Email='${email}'`,
+      function (err, result, fields) {
+        if (err) throw err;
+        if (result[0] == undefined) {
+        } else {
+          help2 = true;
+        }
+      }
+    );
+    con.query(`Select * from Users`, function (err, result, fields) {
+      if (err) throw err;
+      help = result.length;
+      res.send(inserrtUser(help, password, email, username));
+    });
+  });
+});
+function inserrtUser(help, password, email, username) {
+  if (!help2) {
+    con.connect(function (err) {
+      if (err) throw err;
+      con.query(
+        `INSERT INTO Users (ID, Password, Email, Name)VALUES (${help}, '${password}', '${email}', '${username}');`,
+        function (err, result, fields) {
+          if (err) throw err;
+        }
+      );
+    });
+  }
+  return { exists: help2 };
+}
 app.listen(port, console.log("listening on " + port));
 
 app.get("/check", (req, res) => {
