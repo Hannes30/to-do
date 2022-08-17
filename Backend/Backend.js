@@ -46,7 +46,11 @@ app.get("/login/:id", (req, res) => {
         try {
           console.log(result);
           if (result[0].Password == password) {
-            res.send(true);
+            res.send({
+              sucess: true,
+              id: result[0].ID,
+              username: result[0].Name,
+            });
           } else {
             res.send(false);
           }
@@ -96,17 +100,36 @@ function inserrtUser(help, password, email, username) {
       );
     });
   }
-  return { exists: help2 };
+  return { exists: help2, id: help };
 }
 app.listen(port, console.log("listening on " + port));
 
-app.get("/check", (req, res) => {
+app.get("/tasks/:id", (req, res) => {
+  let id = req.params.id;
   console.log("in");
   con.connect(function (err) {
     if (err) throw err;
-    con.query(`Select * from Tasks `, function (err, result, fields) {
-      if (err) throw err;
-      res.send(result);
-    });
+    con.query(
+      `Select * from Tasks where User=${id}`,
+      function (err, result, fields) {
+        if (err) throw err;
+        res.send(result);
+      }
+    );
   });
+});
+app.get("/check/:id", (req, res) => {
+  let id = req.params.id;
+  console.log("in");
+  con.connect(function (err) {
+    if (err) throw err;
+    con.query(
+      `UPDATE Tasks
+      SET Done = 1 where Taskid=${id}`,
+      function (err, result, fields) {
+        if (err) throw err;
+      }
+    );
+  });
+  res.send({ done: true });
 });

@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
 
 const x = new Date();
-
+let id;
 function Task(props) {
+  id = props.id;
   useEffect(() => {}, []);
   const TimteToString = () => {
     let options = {
@@ -27,13 +28,16 @@ function Task(props) {
       </a>
       <h2 className="Task-Name">
         <span>{props.Title}</span>
+      </h2>
+      <h2>
         <p className="Task-Time">{TimteToString()}</p>
       </h2>
     </div>
   );
 }
 function checked() {
-  console.log("called");
-  fetch("http://localhost:8080/check");
+  fetch("http://localhost:8080/check/" + id).then((res) =>
+    window.location.reload()
+  );
 }
 export default Task;

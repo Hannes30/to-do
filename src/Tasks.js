@@ -2,7 +2,7 @@ import Task from "./Task";
 import React, { useState, useEffect } from "react";
 let ArrayRes = [];
 
-function Tasks() {
+function Tasks(props) {
   const [rerender, setrerender] = useState(null);
   let renderList = ArrayRes.map((item, index) => <Task Name={item["Title"]} />);
 
@@ -11,16 +11,17 @@ function Tasks() {
   }, []);
 
   const FetchTas = () => {
-    /*fetch("http://localhost:8080/")
+    fetch("http://localhost:8080/tasks/" + props.id)
       .then((res) => res.json())
       .then((res) => {
         ArrayRes = res;
         setrerender("");
       })
-      .catch((error) => alert(error));*/
+      .catch((error) => alert(error));
   };
   return (
     <div>
+      <h3 id="username">User: {props.username}</h3>
       <button
         id="logout-button"
         onClick={() => {
@@ -35,9 +36,13 @@ function Tasks() {
         <div id="tasks">
           {ArrayRes.map((data, index) => {
             if (data.Done == 0) {
-              console.log(index);
               return (
-                <Task Title={data.Title} TimeDue={data.TimeDue} key={index} />
+                <Task
+                  Title={data.Title}
+                  TimeDue={data.TimeDue}
+                  key={index}
+                  id={data.Taskid}
+                />
               );
             }
           })}

@@ -88,9 +88,11 @@ function login() {
       .then((res) => res.json())
       .then((res) => {
         console.log(res);
-        if (res == true) {
+        if (res.sucess == true) {
           window.localStorage.setItem("email", x[0].value);
           window.localStorage.setItem("password", x[1].value);
+          window.localStorage.setItem("id", res.id);
+          window.localStorage.setItem("username", res.username);
           window.location.reload();
         }
         if (res == false) {
@@ -131,6 +133,8 @@ function signup() {
             "block";
           window.localStorage.setItem("email", email);
           window.localStorage.setItem("password", password);
+          window.localStorage.setItem("id", res.id);
+          window.localStorage.setItem("username", username);
           window.location.reload();
         } else {
           document.getElementById("error-message-login").innerHTML =
@@ -153,7 +157,7 @@ function canfetch(data) {
   if (hasWhiteSpace(data[1].value) || data[1].value.length < 8) {
     //pass1
     errormsg =
-      "Passwort darf keine Leerzeichen haben und muss länger als 8 zeichen sein";
+      "Passwort darf keine Leerzeichen haben und muss mindestens 8 zeichen haben";
     return false;
   }
   if (hasWhiteSpace(data[2].value) || data[2].value.length <= 1) {

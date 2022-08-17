@@ -30,9 +30,9 @@ body {
 }
 #logout-button {
   position: absolute;
-  right: 100px;
+  left: 50px;
   background-color: var(--SecondaryColor);
-  top: 100px;
+  top: 25px;
   padding: 10px 20px;
   border: 2px solid var(--Grey);
   border-radius: 5px;
@@ -43,7 +43,7 @@ body {
   transition: 0.35s;
 }
 #logout-button:hover {
-  top: 95px;
+  top: 22px;
 }
 #login {
   margin-top: 50px;
@@ -122,7 +122,7 @@ body {
   margin: 2.5em;
 }
 
-#Tasks {
+#tasks {
   width: 100vw;
   display: flex;
   align-items: center;
@@ -134,12 +134,20 @@ body {
 .Task {
   position: relative;
   width: 70vw;
-  height: 3em;
+  height: 4em;
   margin: 1rem 0rem;
   background-color: var(--Grey);
   border-radius: 10px;
+  min-width: min-content;
+  min-height: min-content;
+}
+#username {
+  position: relative;
+  float: left;
+  left: 50px;
 }
 .Task-Name {
+  max-width: 50%;
   border-radius: 5px 5px 0px 0px;
 }
 .Task-Name span {
@@ -147,15 +155,21 @@ body {
   border-radius: 5px 5px 0px 0px;
   float: left;
   left: 2em;
+  top: -0.5em;
 }
 .Task-Time {
+  max-width: 30%;
   position: relative;
+  float: right;
+  right: 5%;
   font-size: 0.7em;
-  top: 0.5em;
+  top: -30px;
 }
 .check-circel {
   position: absolute;
   left: -0.5vw;
+  width: 50px;
+  height: 50px;
 }
 .check-tick {
   left: 5px;

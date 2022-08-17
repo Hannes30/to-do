@@ -6,7 +6,12 @@ import Login from "./Login";
 function App(props) {
   let render;
   if (isLoggedin()) {
-    render = <Tasks />;
+    render = (
+      <Tasks
+        id={window.localStorage.getItem("id")}
+        username={window.localStorage.getItem("username")}
+      />
+    );
   } else {
     render = (
       <div>
