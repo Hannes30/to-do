@@ -7,10 +7,12 @@ function App(props) {
   let render;
   if (isLoggedin()) {
     render = (
-      <Tasks
-        id={window.localStorage.getItem("id")}
-        username={window.localStorage.getItem("username")}
-      />
+      <div>
+        <Tasks
+          id={window.localStorage.getItem("id")}
+          username={window.localStorage.getItem("username")}
+        />
+      </div>
     );
   } else {
     render = (

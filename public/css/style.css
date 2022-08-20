@@ -2,7 +2,7 @@
   --White: rgb(228, 228, 228);
   --black: #111;
   --Grey: rgb(179, 179, 179);
-  --SecondaryColor: rgb(78, 155, 142);
+  --SecondaryColor: #0c8;
 }
 body {
   background-color: var(--black);
@@ -123,7 +123,9 @@ body {
 }
 
 #tasks {
-  width: 100vw;
+  position: relative;
+  top: 30px;
+  width: 95vw;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -193,9 +195,11 @@ body {
   z-index: 1;
 }
 #footer {
+  position: fixed;
   border-top: 1px solid var(--SecondaryColor);
-  width: 100vw;
   bottom: 0;
+  width: 100%;
+  height: 60px; /* Height of the footer */
 }
 #footer a {
   text-decoration: none;
@@ -210,4 +214,58 @@ body {
   font-size: 100%;
   text-decoration: underline;
   cursor: pointer;
+}
+#new-task-button {
+  position: absolute;
+  left: 50px;
+  top: 150px;
+  padding: 10px;
+  background-color: var(--SecondaryColor);
+  border-radius: 5px;
+  border: 2px solid var(--Grey);
+  color: black;
+  font-weight: 900;
+  cursor: pointer;
+  transition: 0.35s;
+}
+#new-task-button:hover {
+  top: 145px;
+}
+#newTask-modal {
+  line-height: 2rem;
+  position: relative;
+  background-color: var(--Grey);
+  width: 400px;
+  top: 50px;
+  margin: 1rem;
+  color: #000;
+  border-radius: 5px;
+  width: 250px;
+  height: 350px;
+  display: none;
+}
+.new-task-input {
+  border: none;
+  background: none;
+  border-bottom: 1px solid var(--SecondaryColor);
+}
+
+#create-task-button {
+  position: relative;
+  top: 20px;
+  padding: 10px;
+  background-color: var(--white);
+  border-radius: 5px;
+  border: 2px solid var(--SecondaryColor);
+  color: black;
+  font-weight: 900;
+  cursor: pointer;
+  transition: 0.35s;
+}
+#create-task-button:hover {
+  top: 15px;
+}
+#new-task-error {
+  color: red;
+  visibility: hidden;
 }

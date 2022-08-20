@@ -23,7 +23,6 @@ app.use(function (req, res, next) {
 
 app.get("/gettask", (req, res) => {
   count++;
-  console.log("in");
   con.connect(function (err) {
     if (err) throw err;
     con.query(`Select * from Tasks`, function (err, result, fields) {
@@ -64,11 +63,11 @@ app.get("/login/:id", (req, res) => {
 var help;
 var help2 = false;
 app.get("/signup/:id", (req, res) => {
+  console.log(email + " trys to sign in");
   help2 = false;
   let email = req.params.id.split("&")[0].trim();
   let username = req.params.id.split("&")[1].trim();
   let password = req.params.id.split("&")[2];
-  console.log(email + " trys to sign in");
   con.connect(function (err) {
     if (err) throw err;
     con.query(
@@ -106,7 +105,6 @@ app.listen(port, console.log("listening on " + port));
 
 app.get("/tasks/:id", (req, res) => {
   let id = req.params.id;
-  console.log("in");
   con.connect(function (err) {
     if (err) throw err;
     con.query(
@@ -120,7 +118,6 @@ app.get("/tasks/:id", (req, res) => {
 });
 app.get("/check/:id", (req, res) => {
   let id = req.params.id;
-  console.log("in");
   con.connect(function (err) {
     if (err) throw err;
     con.query(
@@ -133,3 +130,33 @@ app.get("/check/:id", (req, res) => {
   });
   res.send({ done: true });
 });
+app.get("/newtask/:id", (req, res) => {
+  let id = req.params.id.split("&")[0];
+  var Taskid;
+  con.connect(function (err) {
+    if (err) throw err;
+    con.query(`Select * from Tasks`, function (err, result, fields) {
+      if (err) throw err;
+      Taskid = result.length;
+      newTask(req.params.id, Taskid);
+    });
+  });
+  res.send({ done: true });
+});
+function newTask(reqid, taskid) {
+  con.connect(function (err) {
+    con.query(
+      `INSERT INTO Tasks (User, Title, TimeDue, Taskid,Done)VALUES (${
+        reqid.split("&")[0]
+      }, '${reqid.split("&")[1]}', '${new Date(reqid.split("&")[2])
+        .toISOString()
+        .slice(0, 19)
+        .replace("T", " ")}', '${taskid}',0);`,
+      function (err, result, fields) {
+        if (err) throw err;
+        console.log("task with" + taskid + " created");
+        return;
+      }
+    );
+  });
+}
