@@ -2,6 +2,7 @@ import Task from "./Task";
 import React, { useState, useEffect } from "react";
 let ArrayRes = [];
 var id;
+const url = "https://hannesscheibelauer-dodo-backen.herokuapp.com";
 
 function Tasks(props) {
   id = props.id;
@@ -13,7 +14,7 @@ function Tasks(props) {
   }, []);
 
   const FetchTas = () => {
-    fetch("http://localhost:8080/tasks/" + props.id)
+    fetch(url+"/tasks/" + props.id)
       .then((res) => res.json())
       .then((res) => {
         ArrayRes = res;
@@ -96,7 +97,7 @@ function newTask() {
   if (name != "") {
     console.log(name + " Time:" + TimeDue);
     document.getElementById("new-task-error").style.visibility = "hidden";
-    fetch("http://localhost:8080/newtask/" + id + "&" + name + "&" + TimeDue)
+    fetch(url+"/newtask/" + id + "&" + name + "&" + TimeDue)
       .then((res) => res.json())
       .then((res) => {
         if (res.done == true) {

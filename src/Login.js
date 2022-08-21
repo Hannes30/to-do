@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useEffect } from "react";
 
 var errormsg;
+const url = "https://hannesscheibelauer-dodo-backen.herokuapp.com";
 
 function Login(props) {
   useEffect(() => {
@@ -84,7 +85,7 @@ function Login(props) {
 function login() {
   let x = document.querySelectorAll(".login-input");
   if (x[0].value.includes("@")) {
-    fetch("http://localhost:8080/login/" + x[0].value + "&" + x[1].value)
+    fetch(url + "/login/" + x[0].value + "&" + x[1].value)
       .then((res) => res.json())
       .then((res) => {
         console.log(res);
@@ -120,9 +121,7 @@ function signup() {
   let username = data[2].value;
   let password = data[1].value;
   if (canfetch(data)) {
-    fetch(
-      "http://localhost:8080/signup/" + email + "&" + username + "&" + password
-    )
+    fetch(url + "/signup/" + email + "&" + username + "&" + password)
       .then((res) => res.json())
       .then((res) => {
         console.log(res);

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 
 const x = new Date();
+const url = "https://hannesscheibelauer-dodo-backen.herokuapp.com";
 let id;
 function Task(props) {
   id = props.id;
@@ -36,8 +37,6 @@ function Task(props) {
   );
 }
 function checked() {
-  fetch("http://localhost:8080/check/" + id).then((res) =>
-    window.location.reload()
-  );
+  fetch(url + "/check/" + id).then((res) => window.location.reload());
 }
 export default Task;
