@@ -3,6 +3,9 @@ import { useEffect } from "react";
 
 var errormsg;
 const url = "https://hannesscheibelauer-dodo-backen.herokuapp.com";
+const fot = {
+  mode: "no-cors",
+};
 
 function Login(props) {
   useEffect(() => {
@@ -85,7 +88,7 @@ function Login(props) {
 function login() {
   let x = document.querySelectorAll(".login-input");
   if (x[0].value.includes("@")) {
-    fetch(url + "/login/" + x[0].value + "&" + x[1].value)
+    fetch(url + "/login/" + x[0].value + "&" + x[1].value, fot)
       .then((res) => res.json())
       .then((res) => {
         console.log(res);
@@ -121,7 +124,7 @@ function signup() {
   let username = data[2].value;
   let password = data[1].value;
   if (canfetch(data)) {
-    fetch(url + "/signup/" + email + "&" + username + "&" + password)
+    fetch(url + "/signup/" + email + "&" + username + "&" + password, fot)
       .then((res) => res.json())
       .then((res) => {
         console.log(res);

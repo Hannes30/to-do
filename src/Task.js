@@ -2,6 +2,9 @@ import React, { useState, useEffect } from "react";
 
 const x = new Date();
 const url = "https://hannesscheibelauer-dodo-backen.herokuapp.com";
+const fot = {
+  mode: "no-cors",
+};
 let id;
 function Task(props) {
   id = props.id;
@@ -37,6 +40,6 @@ function Task(props) {
   );
 }
 function checked() {
-  fetch(url + "/check/" + id).then((res) => window.location.reload());
+  fetch(url + "/check/" + id, fot).then((res) => window.location.reload());
 }
 export default Task;

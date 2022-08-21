@@ -3,6 +3,9 @@ import React, { useState, useEffect } from "react";
 let ArrayRes = [];
 var id;
 const url = "https://hannesscheibelauer-dodo-backen.herokuapp.com";
+const fot = {
+  mode: "no-cors",
+};
 
 function Tasks(props) {
   id = props.id;
@@ -14,7 +17,7 @@ function Tasks(props) {
   }, []);
 
   const FetchTas = () => {
-    fetch(url+"/tasks/" + props.id)
+    fetch(url + "/tasks/" + props.id, fot)
       .then((res) => res.json())
       .then((res) => {
         ArrayRes = res;
@@ -97,7 +100,7 @@ function newTask() {
   if (name != "") {
     console.log(name + " Time:" + TimeDue);
     document.getElementById("new-task-error").style.visibility = "hidden";
-    fetch(url+"/newtask/" + id + "&" + name + "&" + TimeDue)
+    fetch(url + "/newtask/" + id + "&" + name + "&" + TimeDue, fot)
       .then((res) => res.json())
       .then((res) => {
         if (res.done == true) {
