@@ -4,7 +4,7 @@ import { useEffect } from "react";
 var errormsg;
 const url = "https://hannesscheibelauer-dodo-backen.herokuapp.com";
 const fot = {
-  mode: "no-cors",
+  mode: "no-cors"
 };
 
 function Login(props) {
