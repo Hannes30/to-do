@@ -40,6 +40,6 @@ function Task(props) {
   );
 }
 function checked() {
-  fetch(url + "/check/" + id, fot).then((res) => window.location.reload());
+  fetch(url + "/check/" + id).then((res) => window.location.reload());
 }
 export default Task;
