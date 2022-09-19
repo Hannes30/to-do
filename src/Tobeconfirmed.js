@@ -14,7 +14,7 @@ function Tobeconfirmed(props) {
         }}
       >
         {" "}
-        Neu Regestrieren
+        Neu Registrieren
       </button>
     </div>
   );
