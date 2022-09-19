@@ -4,7 +4,7 @@ import Tasks from "./Tasks";
 import Login from "./Login";
 import Tobeconfirmed from "./Tobeconfirmed";
 
-const url = "https://dodo-furt-backend.herokuapp.com/";
+const url = "https://dodo-furt-backend.herokuapp.com";
 
 let shouldfetch = true;
 

@@ -2,7 +2,7 @@ import Task from "./Task";
 import React, { useState, useEffect } from "react";
 let ArrayRes = [];
 var id;
-const url = "https://dodo-furt-backend.herokuapp.com/";
+const url = "https://dodo-furt-backend.herokuapp.com";
 const fot = {
   mode: "no-cors",
 };
