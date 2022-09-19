@@ -237,10 +237,11 @@ body {
 }
 #newTask-modal {
   line-height: 2rem;
-  position: relative;
+  position: absolute;
+  z-index: 1;
   background-color: var(--Grey);
   width: 400px;
-  top: 50px;
+  top: 200px;
   margin: 1rem;
   color: #000;
   border-radius: 5px;

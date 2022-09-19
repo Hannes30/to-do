@@ -16,8 +16,11 @@ function Task(props) {
       month: "short",
       day: "numeric",
     };
-    let Datum = new Date(props.TimeDue);
-    return Datum.toLocaleDateString("de-at", options);
+    if (props.TimeDue != null) {
+      let Datum = new Date(props.TimeDue);
+      return Datum.toLocaleDateString("de-at", options);
+    }
+    return "";
   };
   return (
     <div className="Task">
