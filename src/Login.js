@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useEffect } from "react";
 
 var errormsg;
-const url = "https://hannesscheibelauer-dodo-backen.herokuapp.com";
+const url = "https://dodo-furt-backend.herokuapp.com/";
 
 function Login(props) {
   useEffect(() => {
