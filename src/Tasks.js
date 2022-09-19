@@ -72,7 +72,7 @@ function Tasks(props) {
         <label htmlFor="task-name">Time Due: </label>
         <br />
         <input
-          type="datetime-local"
+          type="date"
           id="Task-Time-Due"
           className="new-task-input"
         ></input>
