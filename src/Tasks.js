@@ -17,7 +17,9 @@ function Tasks(props) {
   }, []);
 
   const FetchTas = () => {
-    fetch(url + "/tasks/" + props.id)
+    fetch(
+      url + "/tasks/" + props.id + "&" + window.localStorage.getItem("password")
+    )
       .then((res) => res.json())
       .then((res) => {
         ArrayRes = res;
